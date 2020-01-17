@@ -5,20 +5,18 @@
 
 
 class GroundVehicle():
-    def __init__(self, name,  num_wheels=4):
+    def __init__(self,  num_wheels=4):
         # change it so the num_wheels defaults to 4 if not specified
         # self.num_wheels = num_wheels
         self.num_wheels = num_wheels
-        self.name = name
 
     # Todo add method drive() that returns "vroooom".
     def drive(self):
         return f'vroooom'
 
 
-g = GroundVehicle('ground unit')
-print('\nnumber of wheels is 4', g.num_wheels)
-print('\nground unit goes', g.drive())
+print('\nnumber of wheels is 4', GroundVehicle().num_wheels)
+print('\nground unit goes', GroundVehicle().drive())
 
 # Subclass Motorcycle from GroundVehicle.
 #
@@ -31,26 +29,24 @@ print('\nground unit goes', g.drive())
 # Todo # Subclass Motorcycle from GroundVehicle.
 class Motorcycle(GroundVehicle):
     # #of wheels to 2
-    def __init__(self, name,  num_wheels=2):
+    def __init__(self,  num_wheels=2):
         super().__init__(num_wheels)
-        self.name = name
 
     # Override the drive() method in Motorcycle so that it returns "BRAAAP!!"
 
     def drive(self):
-        return f'BRAAAP'
+        return f'BRAAAP!!'
 
 
-m = Motorcycle('motorcycle')
-print('\nmotercycle # of wheels is 2', m.num_wheels)
-print('\nmotercycle goes', m.drive())
+print('\nmotercycle # of wheels is 2', Motorcycle().num_wheels)
+print('\nmotercycle goes', Motorcycle().drive())
 
 vehicles = [
-    GroundVehicle('ground unit'),
-    GroundVehicle('ground unit'),
-    Motorcycle('motorcycle'),
-    GroundVehicle('ground unit'),
-    Motorcycle('motorcycle'),
+    GroundVehicle(),
+    GroundVehicle(),
+    Motorcycle(),
+    GroundVehicle(),
+    Motorcycle(),
 ]
 
 # Go through the vehicles list and print the result of calling drive() on each.
@@ -58,4 +54,4 @@ vehicles = [
 # TODO
 
 for vehicle in vehicles:
-    print(f'\n and this {vehicle.name} goes', vehicle.drive())
+    print(f'\n and this vehicle goes', vehicle.drive())

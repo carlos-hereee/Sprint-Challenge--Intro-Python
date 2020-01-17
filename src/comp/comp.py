@@ -55,12 +55,11 @@ print('\nEnds with e:', b)
 # Write a list comprehension that creates a list of names of everyone
 # whose name starts with any letter between 'C' and 'G' inclusive.
 
-first_letters = ['C', 'G']
 c = [
     # print the human name
     human.name for human in humans
     # filter the name if it starts with e
-    if human.name[0] in first_letters
+    if (human.name[0] >= 'C') and (human.name[0] <= 'G')
 ]
 print('\nStarts between C and G, inclusive:', c)
 
@@ -97,6 +96,6 @@ print("\nAll names uppercase:", g)
 
 # Write a list comprehension that contains the square root of all the ages.
 h = [
-    human.age ** human.age for human in humans
+    math.sqrt(human.age) for human in humans
 ]
 print("\nSquare root of ages:", h)
