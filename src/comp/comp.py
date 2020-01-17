@@ -1,5 +1,8 @@
-# The following list comprehension exercises will make use of the 
-# defined Human class. 
+# The following list comprehension exercises will make use of the
+# defined Human class.
+import math
+
+
 class Human:
     def __init__(self, name, age):
         self.name = name
@@ -7,6 +10,14 @@ class Human:
 
     def __repr__(self):
         return f"<Human: {self.name}, {self.age}>"
+
+    # create a method that willl get the name and age
+    def name_age_hyphen(self):
+        return f'{self.name}-{self.age}'
+
+    def name_age_tuple(self):
+        return f'{self.name}, {self.age}'
+
 
 humans = [
     Human("Alice", 29),
@@ -23,49 +34,69 @@ humans = [
 
 # Write a list comprehension that creates a list of names of everyone
 # whose name starts with 'D':
-print("Starts with D:")
-a = []
-print(a)
+a = [
+    # print the human name
+    human.name for human in humans
+    # filter the name if it starts with d
+    if human.name.startswith('D')
+]
+print('\nStarts with D:', a)
 
 # Write a list comprehension that creates a list of names of everyone
 # whose name ends in "e".
-print("Ends with e:")
-b = []
-print(b)
+b = [
+    # print the human name
+    human.name for human in humans
+    # filter the name if it starts with e
+    if human.name.endswith('e')
+]
+print('\nEnds with e:', b)
 
 # Write a list comprehension that creates a list of names of everyone
 # whose name starts with any letter between 'C' and 'G' inclusive.
-print("Starts between C and G, inclusive:")
-c = []
-print(c)
+
+first_letters = ['C', 'G']
+c = [
+    # print the human name
+    human.name for human in humans
+    # filter the name if it starts with e
+    if human.name[0] in first_letters
+]
+print('\nStarts between C and G, inclusive:', c)
 
 # Write a list comprehension that creates a list of all the ages plus 10.
-print("Ages plus 10:")
-d = []
-print(d)
+d = [
+    human.age + 10 for human in humans
+]
+print('\nAges plus 10:', d)
 
 # Write a list comprehension that creates a list of strings which are the name
 # joined to the age with a hyphen, for example "David-31", for all humans.
-print("Name hyphen age:")
-e = []
-print(e)
+e = [
+    human.name_age_hyphen() for human in humans
+]
+print("\nName hyphen age:", e)
 
 # Write a list comprehension that creates a list of tuples containing name and
 # age, for example ("David", 31), for everyone between the ages of 27 and 32,
 # inclusive.
-print("Names and ages between 27 and 32:")
-f = []
-print(f)
+
+f = [
+    tuple([human.name, human.age])
+    for human in humans if human.age >= 27 if human.age <= 32
+]
+print("\nNames and ages between 27 and 32:", f)
 
 # Write a list comprehension that creates a list of new Humans like the old
 # list, except with all the names uppercase and the ages with 5 added to them.
 # The "humans" list should be unmodified.
-print("All names uppercase:")
-g = []
-print(g)
+g = [
+    Human(name=human.name.upper(), age=human.age+5) for human in humans
+]
+print("\nAll names uppercase:", g)
 
 # Write a list comprehension that contains the square root of all the ages.
-print("Square root of ages:")
-import math
-h = []
-print(h)
+h = [
+    human.age ** human.age for human in humans
+]
+print("\nSquare root of ages:", h)
